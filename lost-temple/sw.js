@@ -10,21 +10,21 @@
  * build lists it over PRECACHE), and the page then sends the other URLs it already loaded ('backfill',
  * src/pwa.ts).
  * Two caches:
- *  - code, per version (the build writes package.json's version over 2.3.0): a new version
+ *  - code, per version (the build writes package.json's version over 2.3.3): a new version
  *    starts a fresh one and drops the old
  *  - music and the font (assets/), per extract (the build writes a hash of those files over
- *    991775829fc6): it outlives a new version, so a release that only changes code doesn't download
+ *    6e1bcd4a0533): it outlives a new version, so a release that only changes code doesn't download
  *    the songs again
  * Ranged reads (audio elements stream the music with Range) are answered from a cached file when there
  * is one, so the music plays offline; a 206 from the network can't be cached and goes straight through.
  */
-const VERSION = '2.3.0';
+const VERSION = '2.3.3';
 const CACHE = `lost-temple-${VERSION}`;
-const ART_CACHE = `lost-temple-art-991775829fc6`;
+const ART_CACHE = `lost-temple-art-6e1bcd4a0533`;
 const SCOPE = self.registration.scope;
 const ART_ROOT = new URL('assets/', SCOPE).href;
 const PACK_ROOT = new URL('packs/', SCOPE).href;
-const PRECACHE = ["bundle/index-4zqF7ZMR.js","bundle/worker-CTztwe9d.js"];
+const PRECACHE = ["bundle/index-CSODyQg7.js","bundle/worker-D10y30O-.js"];
 const SHELL = ['./', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', ...PRECACHE].map((p) => new URL(p, SCOPE).href);
 
 /** The cache a URL belongs in. */
